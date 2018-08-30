@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin:0px;
+  background:#475d62 url(/src/assets/imagens/star-sky.jpg);
+  background-size:cover;
+  padding:0px;
+  height:100%;
+  width:100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.hand {
+  cursor:pointer;
+}
+
