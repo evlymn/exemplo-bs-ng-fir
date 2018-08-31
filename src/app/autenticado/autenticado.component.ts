@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { UsuarioService } from '../services/usuario/usuario.service';
 
 @Component({
   selector: 'app-autenticado',
@@ -9,10 +10,17 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class AutenticadoComponent implements OnInit {
   perfil: Observable<any>;
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private user: UsuarioService) {
+    this.auth.authState.subscribe(u => {
+      if (u) {
+        this.perfil = this.user.obterPerfilGithub();
+      }
+    });
+  }
 
   logOut() {
     this.auth.signOut();
   }
+
   ngOnInit() {}
 }

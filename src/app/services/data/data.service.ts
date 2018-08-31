@@ -7,21 +7,19 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class DataService {
   constructor(private db: AngularFireDatabase) {}
 
-  push(obj: any): string {
-    return this.db.database.ref('exemplos').push(obj).key;
+  push(ref: string, obj: any): string {
+    return this.db.database.ref(ref).push(obj).key;
   }
 
-  update(obj: any, key: string) {
-    return this.db.database
-      .ref('exemplos')
-      .child(key)
-      .update(obj);
+  update(ref: string, obj: any) {
+    return this.db.database.ref(ref).update(obj);
   }
 
-  set(obj: any, key: string) {
-    return this.db.database
-      .ref('exemplos')
-      .child(key)
-      .set(obj);
+  set(ref: string, obj: any) {
+    return this.db.database.ref(ref).set(obj);
+  }
+
+  getObject(ref: string) {
+    return this.db.object(ref).valueChanges();
   }
 }

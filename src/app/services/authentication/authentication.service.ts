@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,14 @@ import * as firebase from 'firebase/app';
 export class AuthenticationService {
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.onAuthStateChanged();
+  }
+
+  public get authState(): Observable<firebase.User> {
+    return this.angularFireAuth.authState;
+  }
+
+  public get currenUser(): firebase.User {
+    return this.angularFireAuth.auth.currentUser;
   }
 
   private onAuthStateChanged() {

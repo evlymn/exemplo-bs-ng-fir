@@ -1,3 +1,7 @@
 <h1 class="hand" (click)="logOut()">
   autenticado works!
 </h1>
+
+<p>
+Nome: {{(perfil|async)?.name }}
+</p>

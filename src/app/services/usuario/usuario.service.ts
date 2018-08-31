@@ -1,17 +1,19 @@
+import { AuthenticationService } from './../authentication/authentication.service';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { DataService } from '../data/data.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: DataService, private auth: AuthenticationService) {}
 
   salvarUsuarioGithub(uid: string, additionalUserInfo: firebase.auth.AdditionalUserInfo) {
-    return this.db.database
-      .ref('usuarios')
-      .child(uid)
-      .child('github')
-      .set(additionalUserInfo, err => console.exception(err.message, [err]));
+    return this.db.set('usuarios/' + uid + '/github', additionalUserInfo);
+  }
+
+  obterPerfilGithub() {
+  return this.db.getObject('usuarios/' + this.auth.currenUser.uid + '/github/profile');
   }
 }
