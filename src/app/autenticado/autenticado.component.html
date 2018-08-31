@@ -1,7 +1,25 @@
-<h1 class="hand" (click)="logOut()">
-  autenticado works!
-</h1>
+<div class="login-dark">
+  <form method="post">
+    <h2 class="sr-only">Login Form</h2>
+    <div class="illustration">
 
-<p>
-Nome: {{(perfil|async)?.name }}
-</p>
+      <img class="img-perfil" src="{{(perfil | async)?.avatar_url}}">
+    </div>
+    <div class="nome">{{(perfil | async)?.name}} </div>
+    <p class="forgot">
+      {{(perfil | async)?.bio}}
+    </p>
+    <div class="row">
+      <div class="col">
+        <a href="{{(perfil | async)?.html_url}}" target="_blank" title="Perfil no Github" class="forgot"> <i class="fab fa-github-alt"></i></a>
+      </div>
+      <div class="col">
+        <a href="{{(perfil | async)?.blog}}" target="_blank" title="Site pessoal" class="forgot"> <i class="fas fa-link"></i></a>
+
+      </div>
+    </div>
+
+    <a href="#" class="forgot" (click)="logOut()" title="Sair"> <i class="fas fa-sign-out-alt"></i></a>
+
+  </form>
+</div>
