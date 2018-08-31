@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication/authentication.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-autenticado',
@@ -7,6 +8,7 @@ import { AuthenticationService } from '../services/authentication/authentication
   styleUrls: ['./autenticado.component.css']
 })
 export class AutenticadoComponent implements OnInit {
+  perfil: Observable<any>;
   constructor(private auth: AuthenticationService) {}
 
   logOut() {

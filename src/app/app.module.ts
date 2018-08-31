@@ -10,6 +10,8 @@ import { AngularFireModule } from 'angularfire2';
 import { FirebaseConfig } from '../environments/firebase.config';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AutenticadoComponent } from './autenticado/autenticado.component';
+import { UsuarioService } from './services/usuario/usuario.service';
+import { DataService } from './services/data/data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { AutenticadoComponent } from './autenticado/autenticado.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule
     ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, UsuarioService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
