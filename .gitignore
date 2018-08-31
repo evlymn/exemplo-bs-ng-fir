@@ -38,4 +38,4 @@ package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
-.firebase/hosting.ZGlzdC9leGVtcGxvLWJzLW5nLWZpcg.cache
+.firebase/
